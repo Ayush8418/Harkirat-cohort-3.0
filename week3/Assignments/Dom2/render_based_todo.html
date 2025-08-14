@@ -1,0 +1,58 @@
+<body>
+  <input type="text"></input>
+  <button onclick="addTodo()">Add todo!</button>
+  <div id="todo-list"></div>
+  <script>
+    let todos = [];
+    let count = 0;
+
+    function addTodo() {
+      todos.push({
+        title: document.querySelector("input").value
+      })
+      render();
+    }
+
+    function deleteTodo(tasktext) {
+      console.log(tasktext);
+      todos.filter((task)=>{
+        if(task != tasktext){
+          return task;
+        }
+      })
+      console.log(todos)
+      render();
+    }
+
+    function CreateComponent(task){
+      let taskDiv = document.createElement("div");
+      let taskP = document.createElement("p");
+      let taskButt = document.createElement("button");
+      taskP.pos = task;
+
+      taskButt.textContent = "Delete";
+
+      taskButt.addEventListener("click", (e)=>{
+        let divEl = e.target;
+        let tasktext = divEl.parentElement.getElementsByTagName("p").textContent;
+        deleteTodo(tasktext);
+      })
+
+      taskDiv.appendChild(taskP);
+      taskDiv.appendChild(taskButt);
+
+      return taskDiv;
+    }
+
+    function render() { 
+      let itemList = document.getElementById("todo-list");
+      itemList.innerHTML = "";
+      count = 0;
+
+      todos.forEach((item)=>{
+        let itemDiv = CreateComponent(item.title);
+        itemList.appendChild(itemDiv);
+      })
+    }
+  </script>
+</body>

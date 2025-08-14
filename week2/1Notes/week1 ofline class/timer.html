@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="mydiv">
+        <h1 id="timer"></h1>
+    </div>
+    <script>
+        setInterval(()=>{
+            const myDate = new Date();
+            var content = myDate.toString();
+            content = content.replace("GMT+0530 (India Standard Time)", "")
+            const myElement = document.getElementById("timer");
+            myElement.textContent = content;
+        }, 1000);
+
+        
+    </script>
+    <style>
+        body{
+            background-color: #c19df7;
+        }
+        div{
+            display: flex;
+            height: 99vh;
+            background-image: url('./blade_runner_bg.jpg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            justify-content: center;
+            align-items: center;
+            margin: -20px;
+        }
+        h1{
+            color: rgb(255, 255, 255);
+            font-size: xx-large;
+            backdrop-filter: blur(2px);
+        }
+    </style>
+</body>
+</html>

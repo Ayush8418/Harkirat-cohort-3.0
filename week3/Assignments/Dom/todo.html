@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do List</title>
+    <!-- <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        #app {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 350px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        #heading {
+            text-align: center;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        #input {
+            width: calc(100% - 60px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        #submit-button {
+            padding: 10px 15px;
+            margin-left: 5px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #submit-button:hover {
+            background: #218838;
+        }
+
+        #todo-list {
+            margin-top: 20px;
+        }
+
+        .task {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fafafa;
+            padding: 8px 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 8px;
+        }
+
+        .task p {
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        .task button {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .task button:hover {
+            background: #c82333;
+        }
+    </style> -->
+</head>
+<body>
+    <div id="app">
+        <h1 id="heading">To-Do List</h1>
+        <input type="text" id="input" placeholder="Enter a task">
+        <button id="submit-button">Add</button>
+        <div id="todo-list"></div>
+    </div>
+
+    <script>
+        let submit_button = document.getElementById("submit-button");
+        let input = document.getElementById("input");
+        let todo_list = document.getElementById("todo-list");
+        let count = 1;
+
+        function addTask() {
+            let task = input.value.trim();
+            if (task !== "") {
+                let newDiv = document.createElement("div");
+                newDiv.className = "task";
+                newDiv.id = "task-" + count;
+
+                let newTask = document.createElement("p");
+                newTask.textContent = task;
+
+                let newDeleteButton = document.createElement("button");
+                newDeleteButton.textContent = "Delete";
+
+                // Delete function
+                newDeleteButton.addEventListener("click", () => {
+                    todo_list.removeChild(newDiv);
+                });
+
+                newDiv.appendChild(newTask);
+                newDiv.appendChild(newDeleteButton);
+                todo_list.appendChild(newDiv);
+
+                input.value = ""; // clear input
+                count++;
+            }
+        }
+
+        submit_button.addEventListener('click', addTask);
+
+        // Allow Enter key to add task
+        input.addEventListener('keypress', (e) => {
+            if (e.key === "Enter") {
+                addTask();
+            }
+        });
+    </script>
+</body>
+</html>
