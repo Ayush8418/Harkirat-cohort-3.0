@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <h1>hello </h1>
+    <p></p>
+    <script>
+        // async function getRecentPost() {
+        //     const res = await fetch("https://jsonplaceholder.typicode.com/posts/1");
+        //     const data = await res.json();
+        //     document.querySelector("p").textContent = JSON.stringify(data);
+        // }
+        
+        // getRecentPost();
+
+        async function axiosFunction(){
+            const res = await axios.get("https://jsonplaceholder.typicode.com/posts/1");
+            console.log(res.data.title);
+            document.querySelector("p").textContent = res.data.title;
+        }
+        axiosFunction();
+    </script>
+</body>
+</html>
