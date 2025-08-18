@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+</head>
+<body>
+    <h1>My Auth System</h1>
+    <div class="auth-div">
+        <input type="text" id="up-username">
+        <input type="text" id="up-password">
+        <button id="up-submit" onclick="handleSignup()">sign-up</button>
+
+        <br><br>
+
+        <input type="text" id="in-username">
+        <input type="text" id="in-password">
+        <button id="in-submit" onclick="handleSignin()">sign-in</button>
+    </div>
+
+    <p>user Information:</p>
+    <div class="user-info">
+
+    </div>
+
+    <button id="logout-button" onclick="handleLogout()">logout</button>
+
+    <script src="./script.js"></script>
+     <script>
+        
+     </script>
+</body>
+</html>
