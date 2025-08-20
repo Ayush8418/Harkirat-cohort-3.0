@@ -18,15 +18,20 @@ function verifyToken(req, res, next){
     const token = req.headers.token;
 
     try{
-        var decoded = jwt.verify(token, secret);
-        req.user = decoded;
+        var decoded = jwt.verify(token, secret, function(err, decoded){
+            if(err){
+                res.status(403).json({"message": "invalid user"});
+            }
+            else{
+                req.user = decoded;
+                next();
+            }
+        });
     }
     catch(err){
         console.log("wrong Token");
-        res.status(401).json({msg: "Invalid Token"})
+        res.status(403).json({message: "Invalid Token"})
     }
-    
-    next();
 
 }
 
@@ -59,11 +64,10 @@ app.post("/signin", (req, res)=>{
     const password = req.body.password;
     const user = users.find((user)=> (user.username==username && user.password==password));
     if(!user){
-        res.status(405).json({message: "wrong credentials"});
+        res.status(403).json({message: "wrong credentials"});
     }
     else{
         let token = jwt.sign({username: username}, secret, { expiresIn: '1h' });
-
         res.status(200).json({message: "logged in", token: token, user: user});
     }
 })

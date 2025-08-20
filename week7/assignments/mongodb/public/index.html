@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <h1>My to-do App</h1>
+    <button onclick="logout()" id="logout-button">logout</button>
+    <div id="auth-div">
+        <div id="signup">
+            <input type="email" id="email" placeholder="email">
+            <input type="password" id="password" placeholder="password">
+            <input type="text" id="username" placeholder="username">
+        </div>
+        <div>
+            <button onclick="handleSignup()" id="signup-button">signUp</button>
+            <button onclick="handleSignin()" id="signin-button">signIn</button>
+        </div>
+    </div>
+
+    <div id="main">
+        <div id="todo-input">
+            <input type="text" id="todo-description" placeholder="Write Your ToDo">
+            <button id="add-todo-button" onclick="addTodo()">Add</button>
+        </div>
+        <div id="todo-list">
+            
+        </div>
+    </div>
+
+
+    <script src="./script.js"></script>
+</body>
+</html>
